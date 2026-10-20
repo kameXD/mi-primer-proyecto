@@ -22,10 +22,10 @@ Abre el puerto 8000 en tu navegador. No es necesario instalar paquetes ni compil
 - F o botón superior: pantalla completa (depende del permiso del navegador).
 - Espacio: iniciar/pausar la simulación si el foco está en la diapositiva; en las demás, avanzar. Si un botón tiene el foco, Espacio activa ese botón.
 - Contenido y puntos inferiores: ir directamente a una diapositiva.
-- Escape: cerrar índice o texto original; salir de pantalla completa.
+- Escape: cerrar índice o panel de detalle; salir de pantalla completa.
 - Iniciar/Continuar, Pausar, Avanzar paso y Reiniciar: controlar cada recorrido.
 - NAT estática, NAT dinámica y NAT PAT: cambiar modalidad en «Tipos de NAT».
-- Leer sección completa: consultar el texto original correspondiente, incluidos sus subtemas.
+- Explorar el tema: consultar las explicaciones completas, incluidos sus subtemas.
 
 ## Estructura exacta
 
@@ -35,11 +35,12 @@ Se mantienen el orden y los títulos del informe. «Cuerpo» identifica el desar
 2. **Introducción**.
 3. **Navegación por internet-Direcciones IP privadas/públicas y NAT.**
 4. **¿Cómo funciona NAT?** — solicitud, traducción, respuesta y entrega; tabla y paquete animado.
-5. **Características principales de NAT** — las cinco características del informe.
+5. **Características principales de NAT** — lista vertical numerada con cinco iconos e ilustración SVG de dispositivos, router NAT e Internet; paquetes animados y traducción de IP.
 6. **Tipos de NAT** — pestañas de NAT estática, NAT dinámica y NAT PAT. Incluye **Ejemplo funcionamiento de NAT/PAT**, su analogía postal, los puertos y la tabla. NAT64 se trata en el lugar que ocupa en el informe: la diapositiva 8.
 7. **Ventajas y desventajas de NAT** — seis ventajas, seis desventajas y **NAT en los videojuegos en línea** con abierto, moderado y estricto, alternativas de conectividad y aclaración sobre ping/velocidad.
 8. **NAT y la transición hacia IPv6** — doble pila, túneles, traducción de protocolos y recorrido conceptual NAT64 de ida y vuelta.
 9. **Conclusión**.
+10. **¡Gracias por su atención!** — cierre tecnológico con una animación sutil de paquetes y botón para volver a la portada.
 
 Los paneles de lectura contienen los párrafos originales de las secciones, para conservar los detalles que se condensan en pantalla. Las afirmaciones académicas se presentan como las expone el informe; la presentación no agrega investigación externa ni corrige el documento. El texto de portada, que Word guarda dentro de un bloque estructurado, también fue leído. El único recurso gráfico extraído es el escudo de la portada.
 
@@ -76,3 +77,7 @@ NODE_PATH=/tmp/nat-tests/node_modules CHROMIUM_PATH=/usr/bin/chromium node tests
 ```
 
 `CHROMIUM_PATH` debe señalar un Chromium instalado. `BASE_URL` permite usar otra dirección del servidor. Las pruebas verifican estructura, lectura del informe, navegación, NAT, PAT, asignaciones dinámicas, NAT64, pausa, reinicio, reproducción automática, pantalla completa, apertura sin servidor y ausencia de desbordamiento en móvil/tableta/escritorio. Los errores mantienen un código de salida distinto de cero. Si la política del navegador bloquea `file://`, esa comprobación se informa como omitida; no se considera validada.
+
+## Actualización de la exposición
+
+La navegación, el índice y la tecla Fin incluyen las diez diapositivas. Los textos visibles presentan las explicaciones directamente, sin referencias al documento de origen; el panel «Explorar el tema» conserva los detalles académicos. Las ilustraciones nuevas son SVG locales y sus animaciones respetan la preferencia de movimiento reducido. Las simulaciones NAT, PAT y NAT64 mantienen su comportamiento.

@@ -36,11 +36,12 @@ Se mantienen el orden y los títulos del informe. «Cuerpo» identifica el desar
 3. **Navegación por internet-Direcciones IP privadas/públicas y NAT.**
 4. **¿Cómo funciona NAT?** — solicitud, traducción, respuesta y entrega; tabla y paquete animado.
 5. **Características principales de NAT** — lista vertical numerada con cinco iconos e ilustración SVG de dispositivos, router NAT e Internet; paquetes animados y traducción de IP.
-6. **Tipos de NAT** — pestañas de NAT estática, NAT dinámica y NAT PAT. Incluye **Ejemplo funcionamiento de NAT/PAT**, su analogía postal, los puertos y la tabla. NAT64 se trata en el lugar que ocupa en el informe: la diapositiva 8.
-7. **Ventajas y desventajas de NAT** — seis ventajas, seis desventajas y **NAT en los videojuegos en línea** con abierto, moderado y estricto, alternativas de conectividad y aclaración sobre ping/velocidad.
-8. **NAT y la transición hacia IPv6** — doble pila, túneles, traducción de protocolos y recorrido conceptual NAT64 de ida y vuelta.
-9. **Conclusión**.
-10. **¡Gracias por su atención!** — cierre tecnológico con una animación sutil de paquetes y botón para volver a la portada.
+6. **Tipos de NAT** — pestañas de NAT estática, NAT dinámica y NAT PAT. Incluye **Ejemplo funcionamiento de NAT/PAT**, su analogía postal, los puertos y la tabla. NAT64 se trata en el lugar que ocupa en el informe: la diapositiva 9.
+7. **Ventajas y desventajas de NAT** — seis ventajas y seis desventajas.
+8. **NAT en los videojuegos en línea** — consola, router e Internet; niveles abierto, moderado y estricto seleccionables, animación conceptual, alternativas de conectividad y aclaración sobre ping/velocidad.
+9. **NAT y la transición hacia IPv6** — doble pila, túneles, traducción de protocolos y recorrido conceptual NAT64 de ida y vuelta.
+10. **Conclusión**.
+11. **¡Gracias por su atención!** — cierre tecnológico con una animación sutil de paquetes y botón para volver a la portada.
 
 Los paneles de lectura contienen los párrafos originales de las secciones, para conservar los detalles que se condensan en pantalla. Las afirmaciones académicas se presentan como las expone el informe; la presentación no agrega investigación externa ni corrige el documento. El texto de portada, que Word guarda dentro de un bloque estructurado, también fue leído. El único recurso gráfico extraído es el escudo de la portada.
 
@@ -80,4 +81,8 @@ NODE_PATH=/tmp/nat-tests/node_modules CHROMIUM_PATH=/usr/bin/chromium node tests
 
 ## Actualización de la exposición
 
-La navegación, el índice y la tecla Fin incluyen las diez diapositivas. Los textos visibles presentan las explicaciones directamente, sin referencias al documento de origen; el panel «Explorar el tema» conserva los detalles académicos. Las ilustraciones nuevas son SVG locales y sus animaciones respetan la preferencia de movimiento reducido. Las simulaciones NAT, PAT y NAT64 mantienen su comportamiento.
+La navegación, el índice y la tecla Fin incluyen las once diapositivas. Los textos visibles presentan las explicaciones directamente, sin referencias al documento de origen; el panel «Explorar el tema» conserva los detalles académicos. Las ilustraciones nuevas son SVG locales y sus animaciones respetan la preferencia de movimiento reducido. Las simulaciones NAT, PAT y NAT64 mantienen su comportamiento.
+
+### NAT en los videojuegos
+
+La diapositiva 8 permite seleccionar Abierto, Moderado y Estricto para visualizar las restricciones de conectividad. Es una representación conceptual de los niveles descritos en el contenido académico, sin simular una consola específica ni establecer compatibilidades universales entre equipos. Pausar/Reanudar controla sus paquetes animados; Reiniciar vuelve al nivel abierto y al inicio del recorrido. Con el foco en la diapositiva, Espacio también pausa/reanuda. Se respeta movimiento reducido. «Explorar el tema» muestra únicamente los párrafos de videojuegos; ventajas y desventajas conservan su propio panel de detalle.

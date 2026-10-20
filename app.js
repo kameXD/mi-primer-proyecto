@@ -43,6 +43,35 @@ function bindGaming(){
  document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>select(b.dataset.game));$('#game-pause').onclick=toggle;$('#game-reset').onclick=()=>{if(paused)toggle();select('open');lab.getAnimations({subtree:true}).forEach(a=>{a.currentTime=0;});};select('open');
 }
 
+function balanceIcon(name){
+ const paths={
+ addresses:'<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="3" y="21" width="8" height="8" rx="2"/><rect x="21" y="12" width="8" height="8" rx="2"/><path d="M11 7h5v18h-5m5-9h5"/>',
+ shield:'<path d="M16 3l11 4v8c0 7-11 14-11 14S5 22 5 15V7z"/><path d="M10 15l4 4 8-9"/>',
+ speed:'<path d="M5 25a13 13 0 1 1 22 0M16 7v3M7 14l3 2m15-2-3 2M16 22l6-10"/><circle cx="16" cy="22" r="2"/>',
+ flexibility:'<path d="M5 6h7c9 0 3 20 12 20h4M5 26h7c9 0 3-20 12-20h4M24 2l4 4-4 4m0 12 4 4-4 4"/>',
+ costs:'<ellipse cx="16" cy="8" rx="11" ry="5"/><path d="M5 8v8c0 7 22 7 22 0V8M5 16v8c0 7 22 7 22 0v-8M16 4v8"/>',
+ admin:'<rect x="3" y="4" width="26" height="24" rx="3"/><path d="M8 10h16M8 16h16M8 22h16"/><circle cx="12" cy="10" r="2"/><circle cx="21" cy="16" r="2"/><circle cx="15" cy="22" r="2"/>',
+ delay:'<circle cx="16" cy="18" r="11"/><path d="M16 11v8l5 3M12 3h8m-4 0v4m9 2 3-3"/>',
+ broken:'<path d="M12 8H6v6m0-6 7 7m7 9h6v-6m0 6-7-7M5 26 26 5M15 5h5m-9 22H6"/>',
+ trace:'<circle cx="13" cy="13" r="8"/><path d="m19 19 10 10M9 10h8m-8 5h5"/>',
+ protocol:'<path d="M6 4h13l7 7v17H6zM19 4v8h7M11 18l10 7m0-7-10 7"/>',
+ incoming:'<path d="M19 3h9v26h-9M3 16h19m-6-6 6 6-6 6M25 14v4"/>',
+ config:'<path d="M4 8h24M4 24h24M9 3v10m14 6v10"/><circle cx="9" cy="8" r="4"/><circle cx="23" cy="24" r="4"/>'
+ };return `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]}</svg>`;
+}
+function balanceVisual(positive){return `<svg class="balance-network" viewBox="0 0 440 82" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"><path d="M40 20H95L170 41H265L340 20H400M40 62H95L170 41M265 41l75 21h60"/><rect x="16" y="10" width="24" height="18" rx="3"/><rect x="16" y="54" width="24" height="18" rx="3"/><rect x="400" y="10" width="24" height="18" rx="3"/><rect x="400" y="54" width="24" height="18" rx="3"/></g><rect x="179" y="20" width="77" height="42" rx="10" fill="#0a2036" stroke="currentColor"/><text x="217" y="46" fill="currentColor" text-anchor="middle" font-size="16" font-family="monospace">NAT</text><circle class="balance-packet" r="3" fill="currentColor"/><circle class="balance-packet balance-packet-second" r="3" fill="currentColor"/>${positive?'<path d="m342 35 6 6 12-14" fill="none" stroke="currentColor" stroke-width="2"/>':'<path d="m342 32 12 14m0-14-12 14" fill="none" stroke="currentColor" stroke-width="2"/>'}</svg>`;}
+function enhanceBalance(){
+ const comparison=$('.comparison');if(!comparison)return;
+ comparison.classList.add('balance');
+ const icons=[['addresses','shield','speed','flexibility','costs','admin'],['delay','broken','trace','protocol','incoming','config']];
+ comparison.querySelectorAll('article').forEach((panel,index)=>{
+  panel.classList.add('balance-panel',index===0?'balance-positive':'balance-negative');
+  const label=panel.querySelector('.card-label');label.className='balance-heading';label.innerHTML=`<span class="balance-emblem">${balanceIcon(index===0?'shield':'protocol')}</span><div><span class="balance-kicker">${index===0?'LO QUE APORTA':'LO QUE DEBEMOS CONSIDERAR'}</span><h2>${index===0?'Ventajas':'Desventajas'}</h2></div><span class="balance-count">06</span>`;
+  label.insertAdjacentHTML('afterend',balanceVisual(index===0));
+  panel.querySelectorAll('li').forEach((li,i)=>{const content=li.innerHTML;li.innerHTML=`<span class="balance-icon">${balanceIcon(icons[index][i])}</span><div>${content}</div>`;});
+ });
+}
+
 function diagram(multi=false,ipv6=false,hero=false){
  const ys=multi?[48,125,202]:[125];
  return `<svg class="network" viewBox="0 0 640 265" role="img" aria-label="Dispositivos privados conectados a un router NAT y a un servidor de Internet">
@@ -68,6 +97,7 @@ function render(){stop();step=0;$('#slide').style.animation='none';void $('#slid
  if(current===9)html=heading()+`<p class="subtitle">NAT sigue siendo una pieza importante de las redes actuales mientras avanza la transición hacia IPv6.</p><div class="layout"><div class="card"><div class="card-label">Lo que nos llevamos</div>${points(['Las <strong>direcciones IP</strong> identifican los dispositivos y permiten entregar la información.','<strong>Privada y pública:</strong> comunicación local y comunicación con Internet.','<strong>NAT</strong> traduce en ambos sentidos, conserva direcciones, reduce costos y facilita la administración.','<strong>Estática:</strong> correspondencia fija para servidores. <strong>Dinámica:</strong> un conjunto de IP públicas. <strong>PAT:</strong> varios dispositivos comparten una IP.','<strong>IPv6</strong> atiende la demanda a largo plazo; la transición gradual mantiene vigente a NAT.'])}</div><div class="card">${diagram(true)}<div class="takeaway"><h2>Una solución vigente.<br><span class="accent">Una transición en marcha.</span></h2><p>Conectar más dispositivos hoy y facilitar la convivencia de protocolos.</p></div><button id="restart-deck">↺ Volver a la portada</button></div></div>`+sourceButton;
  if(current===10)html=`<section class="thanks"><div class="eyebrow">Redes de Computadoras II · UNAH-VS</div><div class="thanks-orbit" aria-hidden="true">${networkIllustration()}</div><div class="thanks-copy"><span class="pill">CONEXIONES QUE NOS ACERCAN</span><h1>¡Gracias por<br><span class="accent">su atención!</span></h1><div class="thanks-line"></div><p>Network Address Translation</p><button id="restart-deck">↺ Volver a la portada</button></div></section>`;
  $('#slide').innerHTML=html;
+ enhanceBalance();
  $('#count').textContent=`${String(current+1).padStart(2,'0')} / ${String(titles.length).padStart(2,'0')}`;
  $('#prev').disabled=current===0;$('#next').disabled=current===titles.length-1;
  $('#dots').innerHTML=titles.map((t,i)=>`<button class="${i===current?'active':''}" aria-label="${i+1}. ${t}" ${i===current?'aria-current="step"':''} data-slide="${i}"></button>`).join('');

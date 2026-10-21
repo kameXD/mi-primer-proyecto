@@ -86,3 +86,7 @@ La navegación, el índice y la tecla Fin incluyen las once diapositivas. Los te
 ### NAT en los videojuegos
 
 La diapositiva 8 permite seleccionar Abierto, Moderado y Estricto para visualizar las restricciones de conectividad. Es una representación conceptual de los niveles descritos en el contenido académico, sin simular una consola específica ni establecer compatibilidades universales entre equipos. Pausar/Reanudar controla sus paquetes animados; Reiniciar vuelve al nivel abierto y al inicio del recorrido. Con el foco en la diapositiva, Espacio también pausa/reanuda. Se respeta movimiento reducido. «Explorar el tema» muestra únicamente los párrafos de videojuegos; ventajas y desventajas conservan su propio panel de detalle.
+
+### Lectura durante la exposición
+
+Las diapositivas introducen cada tema con una frase breve y explican los conceptos mediante oraciones completas para facilitar su lectura en voz alta. Se conservan los títulos, temas, paneles de detalle, once diapositivas, elementos visuales y simulaciones.
